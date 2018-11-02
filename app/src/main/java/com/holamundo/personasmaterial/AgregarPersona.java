@@ -94,6 +94,7 @@ public class AgregarPersona extends AppCompatActivity {
         txtNombre.setText("");
         txtApellido.setText("");
         cmbsexo.setSelection(0);
+        foto.setImageResource(android.R.drawable.ic_menu_gallery);
         txtCedula.requestFocus();
         InputMethodManager inputMethodManager = (InputMethodManager)
                 getSystemService(Context.INPUT_METHOD_SERVICE);
