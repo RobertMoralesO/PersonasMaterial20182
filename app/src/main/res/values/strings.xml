@@ -9,6 +9,7 @@
     <string name="limpiar">Limpiar</string>
     <string name="masculino">Masculino</string>
     <string name="femenino">Femenino</string>
+    <string name="seleccionarFoto">Seleccionar Foto</string>
     <string name="guardado_exitoso">Persona Guardada Exitosamente</string>
     <string-array name="sexo">
         <item>@string/masculino</item>
