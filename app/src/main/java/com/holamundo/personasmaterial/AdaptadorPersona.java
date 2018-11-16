@@ -18,9 +18,12 @@ import java.util.ArrayList;
 public class AdaptadorPersona extends
         RecyclerView.Adapter<AdaptadorPersona.PersonaViewHolder> {
     private ArrayList<Persona> personas;
+    private OnPersonaClickListener clickListener;
 
-    public AdaptadorPersona(ArrayList<Persona> personas){
+    public AdaptadorPersona(ArrayList<Persona> personas,
+                            OnPersonaClickListener clickListener){
         this.personas=personas;
+        this.clickListener = clickListener;
     }
     @Override
     public PersonaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -31,8 +34,9 @@ public class AdaptadorPersona extends
 
     @Override
     public void onBindViewHolder(final PersonaViewHolder holder, int position) {
-        Persona p = personas.get(position);
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        final Persona p = personas.get(position);
+        StorageReference storageReference = FirebaseStorage.getInstance()
+                .getReference();
         storageReference.child(p.getFoto()).getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
@@ -44,6 +48,13 @@ public class AdaptadorPersona extends
         holder.cedula.setText(p.getCedula());
         holder.nombre.setText(p.getNombre());
         holder.apellido.setText(p.getApellido());
+
+        holder.v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickListener.onPersonaClick(p);
+            }
+        });
     }
 
     @Override
@@ -66,5 +77,8 @@ public class AdaptadorPersona extends
             nombre = v.findViewById(R.id.lblNombre);
             apellido = v.findViewById(R.id.lblApellido);
         }
+    }
+    public interface OnPersonaClickListener{
+        void onPersonaClick(Persona p);
     }
 }
