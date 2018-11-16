@@ -20,6 +20,14 @@ public class Datos {
        databaseReference.child(db).child(p.getId()).setValue(p);
     }
 
+    public static void eliminar(Persona p){
+        databaseReference.child(db).child(p.getId()).removeValue();
+    }
+
+    public static void editar(Persona p){
+        databaseReference.child(db).child(p.getId()).setValue(p);
+    }
+
     public static String getId(){
         return databaseReference.push().getKey();
     }
