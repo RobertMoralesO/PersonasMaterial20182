@@ -16,4 +16,8 @@
         <item>@string/masculino</item>
         <item>@string/femenino</item>
     </string-array>
+    <string name="si">Si</string>
+    <string name="no">no</string>
+    <string name="titulo_eliminar">Eliminar</string>
+    <string name="mensaje_eliminar">Está seguro que desea eliminar esta persona?</string>
 </resources>
